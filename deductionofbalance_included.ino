@@ -73,12 +73,12 @@ if (myFile) {
     Serial.println("error opening 55555.txt");
   }
 
-/*
+
   Ethernet.begin(mac, ip);
   server.begin();
   Serial.print("server is at ");
   Serial.println(Ethernet.localIP());
-*/
+
   
 }
 
@@ -109,11 +109,11 @@ if(from_bl == "11111.txt")
        int_amt = deduct_bal(int_amt);
        Serial.println("After deducting");
        Serial.println(int_amt);
-      
+       myFile.close();
     }
-    myFile.close();
+   
     SD.remove("11111.txt");
-    if(SD.exists("example.txt"))
+    if(SD.exists("11111.txt"))
     {
       Serial.println("not removed");
     }
@@ -130,11 +130,155 @@ if(from_bl == "11111.txt")
     else 
   {
      Serial.println("error opening 11111.txt");
-     Serial.println("locha");
   }
-  
 }
-/*
+  if(from_bl == "22222.txt")
+{
+  myFile = SD.open("22222.txt");
+  if(myFile)
+  {
+     while (myFile.available())
+    {
+       int_amt = myFile.parseInt();
+       Serial.println("parse:");
+       Serial.println(int_amt);
+       int_amt = deduct_bal(int_amt);
+       Serial.println("After deducting");
+       Serial.println(int_amt);
+       myFile.close();
+    }
+   
+    SD.remove("22222.txt");
+    if(SD.exists("22222.txt"))
+    {
+      Serial.println("not removed");
+    }
+   else
+   {
+    Serial.println("removed");
+   }
+    myFile = SD.open("22222.txt", FILE_WRITE);
+    myFile.println(int_amt);
+      //delay(1000);
+      myFile.close();
+      }
+
+    else 
+  {
+     Serial.println("error opening 22222.txt");
+  }
+}
+
+  if(from_bl == "33333.txt")
+{
+  myFile = SD.open("33333.txt");
+  if(myFile)
+  {
+     while (myFile.available())
+    {
+       int_amt = myFile.parseInt();
+       Serial.println("parse:");
+       Serial.println(int_amt);
+       int_amt = deduct_bal(int_amt);
+       Serial.println("After deducting");
+       Serial.println(int_amt);
+       myFile.close();
+    }
+   
+    SD.remove("33333.txt");
+    if(SD.exists("33333.txt"))
+    {
+      Serial.println("not removed");
+    }
+   else
+   {
+    Serial.println("removed");
+   }
+    myFile = SD.open("33333.txt", FILE_WRITE);
+    myFile.println(int_amt);
+      //delay(1000);
+      myFile.close();
+      }
+
+    else 
+  {
+     Serial.println("error opening 33333.txt");
+  }
+}
+
+  if(from_bl == "44444.txt")
+{
+  myFile = SD.open("44444.txt");
+  if(myFile)
+  {
+     while (myFile.available())
+    {
+       int_amt = myFile.parseInt();
+       Serial.println("parse:");
+       Serial.println(int_amt);
+       int_amt = deduct_bal(int_amt);
+       Serial.println("After deducting");
+       Serial.println(int_amt);
+       myFile.close();
+    }
+   
+    SD.remove("44444.txt");
+    if(SD.exists("44444.txt"))
+    {
+      Serial.println("not removed");
+    }
+   else
+   {
+    Serial.println("removed");
+   }
+    myFile = SD.open("44444.txt", FILE_WRITE);
+    myFile.println(int_amt);
+      //delay(1000);
+      myFile.close();
+      }
+
+    else 
+  {
+     Serial.println("error opening 44444.txt");
+  }
+}
+  if(from_bl == "55555.txt")
+{
+  myFile = SD.open("55555.txt");
+  if(myFile)
+  {
+     while (myFile.available())
+    {
+       int_amt = myFile.parseInt();
+       Serial.println("parse:");
+       Serial.println(int_amt);
+       int_amt = deduct_bal(int_amt);
+       Serial.println("After deducting");
+       Serial.println(int_amt);
+       myFile.close();
+    }
+   
+    SD.remove("55555.txt");
+    if(SD.exists("55555.txt"))
+    {
+      Serial.println("not removed");
+    }
+   else
+   {
+    Serial.println("removed");
+   }
+    myFile = SD.open("55555.txt", FILE_WRITE);
+    myFile.println(int_amt);
+      //delay(1000);
+      myFile.close();
+      }
+
+    else 
+  {
+     Serial.println("error opening 55555.txt");
+  }
+}
+
   EthernetClient client = server.available();
   if (client) {
     Serial.println("new client");
@@ -164,10 +308,10 @@ if(from_bl == "11111.txt")
       }
     }
      delay(1);
+
    
     client.stop();
     Serial.println("client disconnected");
-  }*/
+  }
   
 }
-
