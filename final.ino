@@ -3,6 +3,7 @@
   #include <SD.h>
   char data;
   String from_bl;
+  int done = 0;
   int i;
   boolean park1;
   boolean park2;
@@ -130,16 +131,13 @@
     delayMicroseconds(10);
     digitalWrite(trigPin2, HIGH);
     delayMicroseconds(10);
-    /*digitalWrite(trigpin3, HIGH);
-    delayMicroseconds(10);
-    digitalWrite(trigpin4, HIGH);
-    delayMicroseconds(10);
-    */
+    
+    
     digitalWrite(trigPin1, LOW);
     pinMode(echoPin1, INPUT);
     duration = pulseIn(echoPin1, HIGH);
    
-    
+     
     cm = (duration/2) / 29.1;
   
     digitalWrite(trigPin2, LOW);
@@ -297,20 +295,14 @@
     delayMicroseconds(5);
     digitalWrite(trigPin2, LOW);
     delayMicroseconds(5);
-    /*digitalWrite(trigpin3, LOW);
-    delayMicroseconds(5);
-    digitalWrite(trigpin4, LOW);
-    delayMicroseconds(5);
-    */
+    
+    
     digitalWrite(trigPin1, HIGH);
     delayMicroseconds(10);
     digitalWrite(trigPin2, HIGH);
     delayMicroseconds(10);
-    /*digitalWrite(trigpin3, HIGH);
-    delayMicroseconds(10);
-    digitalWrite(trigpin4, HIGH);
-    delayMicroseconds(10);
-    */
+    
+    
     digitalWrite(trigPin1, LOW);
     pinMode(echoPin1, INPUT);
     duration = pulseIn(echoPin1, HIGH);
@@ -343,6 +335,7 @@
        wrong_park = true;
        Serial.println("WRONG PARKING");
     }
+    done = 1;
 
 if(wrong_park==true)
 {
