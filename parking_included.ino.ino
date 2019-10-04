@@ -4,6 +4,7 @@
 char data;
 String from_bl;
 int i = 0;
+int done = 0;
 int trigPin1 = 22;    
 int echoPin1 = 23; 
 int trigPin2 = 24;
@@ -19,6 +20,8 @@ String amt;
 static int int_amt;
 boolean remove_f;
 File myFile;
+
+// Choose mac and ip address of your system.
 byte mac[] = {
   0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED
 };
@@ -102,9 +105,8 @@ if (myFile) {
 
 int deduct_bal(int int_amt)
  {
-  int_amt = int_amt - 30;
-  Serial.println(int_amt);
-  return int_amt;
+  Serial.println(int_amt-30);
+  return int_amt-30;
  }
 void loop() {
 
@@ -131,28 +133,28 @@ void loop() {
  
   // convert the time into a distance
   cm = (duration/2) / 29.1;
- // inches = (duration/2) / 74; 
+  inches = (duration/2) / 74; 
   
   digitalWrite(trigPin2, LOW);
   pinMode(echoPin2, INPUT);
   duration2 = pulseIn(echoPin2, HIGH);
  
   cm2 = (duration2/2) / 29.1;
-  //inches2 = (duration2/2) / 74; 
+  inches2 = (duration2/2) / 74; 
 
   digitalWrite(trigpin3, LOW);
   pinMode(echopin3, INPUT);
   duration3 = pulseIn(echopin3, HIGH);
  
   cm3 = (duration3/2) / 29.1;
-  //inches3 = (duration3/2) / 74; 
+  inches3 = (duration3/2) / 74; 
 
   digitalWrite(trigpin4, LOW);
   pinMode(echopin4, INPUT);
   duration4 = pulseIn(echopin4, HIGH);
  
   cm4 = (duration4/2) / 29.1;
-  //inches4 = (duration4/2) / 74; 
+  inches4 = (duration4/2) / 74; 
 
 
 if(Serial.available() > 0)
@@ -161,6 +163,7 @@ if(Serial.available() > 0)
     from_bl = data;
     Serial.print(from_bl);
 Serial.println(from_bl);
+  done = 1;
 
 if(from_bl == "11111.txt")
 {
